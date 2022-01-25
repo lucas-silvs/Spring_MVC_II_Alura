@@ -16,12 +16,18 @@
         font-size: 2.5rem;
         }
 
+
     </style>
 </head>
 
 <div th:fragment="logo" class="Logo-container mb-3 p-3 d-flex justify-content-between ">
     <span class="logo">mudi</span>
-    <span class="mt-3">login</span>
+    <span class="mt-3">
+        <a href="/login" sec:authorize="!isAuthenticated()" class="text-light">login</a>
+        <a onclick="document.querySelector('#form-login').submit()" href="#" sec:authorize="isAuthenticated()" class="text-light">logout</a>
+    <form id="form-login" th:action="@{/logout}"  method="post"></form>
+    </span>
+
 </div>
 
 <div th:fragment="titulo(valor)" class="jumbotron jumbotron-fluid mb-0">
