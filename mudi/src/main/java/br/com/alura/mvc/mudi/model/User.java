@@ -1,5 +1,7 @@
 package br.com.alura.mvc.mudi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class User {
     private Boolean enabled;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private List<Pedido> pedidos;
+
 
     public List<Pedido> getPedidos() {
         return pedidos;
