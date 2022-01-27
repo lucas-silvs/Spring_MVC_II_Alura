@@ -5,9 +5,12 @@ import br.com.alura.mvc.mudi.dto.RequisicaoNovaOferta;
 import br.com.alura.mvc.mudi.model.Oferta;
 import br.com.alura.mvc.mudi.model.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -17,7 +20,8 @@ public class OfertasRest {
     @Autowired
     private PedidoRepository pedidoRepository;
 
-    public Oferta criarOferta(RequisicaoNovaOferta requisicao){
+    @PostMapping
+    public Oferta criarOferta(@RequestBody @Valid RequisicaoNovaOferta requisicao){
 
         Optional<Pedido> pedidoreq = pedidoRepository.findById(requisicao.getPedidoId());
 
